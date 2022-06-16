@@ -58,6 +58,10 @@
 
 			<form class="form validity" method="post"
 				action="LoginDetailsServlet">
+				<%String ans =(String)request.getAttribute("result"); %>
+					<%if(null!=ans){ %>
+						<h4 style=" font-weight:bold; font-size:15px; color:green; text-align: center"><%=ans %></h4>
+					<%} %>
 				<div class="form-group">
 
 					<div></div>

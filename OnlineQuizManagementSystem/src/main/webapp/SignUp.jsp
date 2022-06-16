@@ -46,26 +46,20 @@
 	<%@include file="Header.jsp"%>
 	<div class="container">
 		<div class="back"
-			style="background-color: #e5e5e5; margin-top: 20px; width: 650px; padding: 40px; margin-left: 250px; border-radius: 70px">
+			style="background-color: #FFFFFF; margin-top: 20px; width: 650px; padding: 40px; margin-left: 250px; border-radius: 70px">
 
-			<form class="form validity" action="RegistrationServlet"
+			<form class="form validity" action="UserRegistrationServlet"
 				method="post">
 				<h1
 					style="font-weight: bold; font-size: 50px; margin-top: 0px; text-align: center; margin-bottom: 30px;">Sign
 					Up</h1>
+					
 				<div class="form-group">
 
-					<input id="name2" name="fname" class="form-control"
-						placeholder="Enter Firstname"
-						data-missing="This field is required" type="text" required>
-				</div>
-				<div class="form-group">
-
-					<input id="name2" name="lname" class="form-control"
-						placeholder="Enter Lastname" data-missing="This field is required"
+					<input id="name2" name="name" class="form-control"
+						placeholder="Enter Fullname" data-missing="This field is required"
 						type="text" required>
 				</div>
-
 				<div class="form-group">
 					<input id="mail" name="email" class="form-control"
 						placeholder="Enter Emailid"
@@ -85,6 +79,19 @@
 				</div>
 				<span id="errmsg"
 					style="color: red; font-weight: bold; font-size: 12px"> </span>
+				<div class="form-group simple">
+
+					<select required class="form-control" name="gender">
+
+						<option value="" disabledselectedhidden">Select Gender</option>
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+						<option value="Others">Others</option>
+
+					</select>
+
+				</div>
+
 
 
 				<div class="form-group simple">
