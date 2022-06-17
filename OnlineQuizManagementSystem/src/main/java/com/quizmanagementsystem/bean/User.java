@@ -3,6 +3,7 @@ package com.quizmanagementsystem.bean;
 
 public class User {
 
+    private int id;
     private String name;
     private String email;
     private String contactno;
@@ -109,10 +110,23 @@ public class User {
 	this.status = status;
     }
 
-    @Override
-    public String toString() {
-	return "User [name=" + name + ", email=" + email + ", contactno=" + contactno + ", gender=" + gender
-		+ ", password=" + password + ", role=" + role + ", status=" + status + "]";
+    /**
+     * @return the id
+     */
+    public int getId() {
+	return id;
     }
 
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+	this.id = id;
+    }
+
+    @Override
+    public String toString() {
+	return "User [id=" + id + ", name=" + name + ", email=" + email + ", contactno=" + contactno + ", gender="
+		+ gender + ", password=" + password + ", role=" + role + ", status=" + status + "]";
+    }
 }

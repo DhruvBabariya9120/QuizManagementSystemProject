@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.quizmanagementsystem.bean.PasswordConvert;
 import com.quizmanagementsystem.bean.User;
@@ -14,21 +15,20 @@ import com.quizmanagementsystem.service.UserService;
 import com.quizmanagementsystem.service.Impl.UserServiceImpl;
 
 /**
- * Servlet implementation class UserRegistrationServlet
+ * Servlet implementation class LoginDetailsServlet
  */
-public class UserRegistrationServlet extends HttpServlet {
+public class LoginDetailsServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+
+    UserService userservice = new UserServiceImpl();
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserRegistrationServlet() {
+    public LoginDetailsServlet() {
 	super();
-
+	// TODO Auto-generated constructor stub
     }
-
-    UserService userservice = new UserServiceImpl();
-    User user = new User();
 
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -38,14 +38,9 @@ public class UserRegistrationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
 
-	String email = request.getParameter("email");
-
-	int ans = userservice.Checkemaildetails(email);
-	if (ans == 0) {
-	    response.getWriter().append("false");
-	} else {
-	    response.getWriter().append("true");
-	}
+	HttpSession httpSession = request.getSession(false);
+	httpSession.invalidate();
+	response.sendRedirect("Login.jsp");
     }
 
     /**
@@ -55,29 +50,24 @@ public class UserRegistrationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
-	String name = request.getParameter("name");
+
 	String email = request.getParameter("email");
-	String phoneno = request.getParameter("phoneno");
-	String gender = request.getParameter("gender");
-	String Password = request.getParameter("password");
+	String password = request.getParameter("password");
+	PasswordConvert ps = new PasswordConvert();
 
-	PasswordConvert pc = new PasswordConvert();
-	String encryptedpassword = pc.encrypt(Password);
+	String encryptpassword = ps.encrypt(password);
+	User user = userservice.verifyLoginDetails(email, encryptpassword);
 
-	user.setName(name);
-	user.setEmail(email);
-	user.setContactno(phoneno);
-	user.setGender(gender);
-	user.setPassword(encryptedpassword);
-	user.setRole("user");
-	user.setStatus(1);
+	if (null != user.getEmail() && null != user.getPassword() && user.getStatus() == 1) {
 
-	String ans = userservice.saveUserDetails(user);
-
-	request.setAttribute("message", ans);
-	RequestDispatcher dispacher = request.getRequestDispatcher("Login.jsp");
-	dispacher.forward(request, response);
-
+	    HttpSession httpSession = request.getSession();
+	    httpSession.setAttribute("Logindetails", user);
+	    RequestDispatcher dispacher = request.getRequestDispatcher("Index.jsp");
+	    dispacher.forward(request, response);
+	} else {
+	    request.setAttribute("message", "Please Enter valid Email or Password");
+	    RequestDispatcher dispacher = request.getRequestDispatcher("Login.jsp");
+	    dispacher.forward(request, response);
+	}
     }
-
 }

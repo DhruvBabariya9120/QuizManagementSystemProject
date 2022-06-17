@@ -12,4 +12,8 @@ import com.quizmanagementsystem.bean.User;
 public interface UserDao {
 
     public int registerUserDetails(Connection connection, User user) throws SQLException;
+
+    public int validateEmail(Connection connection, String email) throws SQLException;
+
+    public User checkLoginDetails(Connection connection, String email, String encryptpassword) throws SQLException;
 }

@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
 	try {
 	    Class.forName("com.mysql.cj.jdbc.Driver");
 	} catch (ClassNotFoundException e) {
-	    // TODO Auto-generated catch block
+
 	    e.printStackTrace();
 	}
 
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
 		    "root", "root");
 	    return connection;
 	} catch (SQLException e) {
-	    // TODO Auto-generated catch block
+
 	    e.printStackTrace();
 	}
 	return null;
@@ -52,6 +52,32 @@ public class UserServiceImpl implements UserService {
 	    e.printStackTrace();
 	}
 	return ans;
+    }
+
+    @Override
+    public int Checkemaildetails(String email) {
+	int ans = 0;
+	try (Connection connection = getConnection()) {
+	    ans = userdao.validateEmail(connection, email);
+
+	} catch (SQLException e) {
+
+	    e.printStackTrace();
+	}
+	return ans;
+    }
+
+    @Override
+    public User verifyLoginDetails(String email, String encryptpassword) {
+	User user = null;
+	try (Connection connection = getConnection()) {
+
+	    user = userdao.checkLoginDetails(connection, email, encryptpassword);
+
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
+	return user;
     }
 
 }

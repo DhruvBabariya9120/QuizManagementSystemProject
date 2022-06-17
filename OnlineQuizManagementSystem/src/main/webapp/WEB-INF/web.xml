@@ -19,4 +19,14 @@
     <servlet-name>UserRegistrationServlet</servlet-name>
     <url-pattern>/UserRegistrationServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginDetailsServlet</display-name>
+    <servlet-name>LoginDetailsServlet</servlet-name>
+    <servlet-class>com.quizmanagementsystem.servlet.LoginDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginDetailsServlet</servlet-name>
+    <url-pattern>/LoginDetailsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

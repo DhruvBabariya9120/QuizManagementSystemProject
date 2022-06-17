@@ -58,7 +58,7 @@
 
 			<form class="form validity" method="post"
 				action="LoginDetailsServlet">
-				<%String ans =(String)request.getAttribute("result"); %>
+				<%String ans =(String)request.getAttribute("message"); %>
 					<%if(null!=ans){ %>
 						<h4 style=" font-weight:bold; font-size:15px; color:green; text-align: center"><%=ans %></h4>
 					<%} %>
@@ -74,7 +74,6 @@
 
 				<div class="form-group simple">
 
-					<!--        <input id="phone2" name="phone" class="form-control" pattern="\d{3}[\-]\d{3}[\-]\d{4}" data-mismatch="Please match the requested format" type="tel" required> -->
 					<input type="password" name="password" class="form-control"
 						id="myInput" placeholder="Enter Password" required> <br>
 					<!-- An element to toggle between password visibility -->

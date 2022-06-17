@@ -3,6 +3,7 @@ package com.quizmanagementsystem.dao.Impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.quizmanagementsystem.bean.User;
@@ -29,5 +30,44 @@ public class UserDaoImpl implements UserDao {
 	    ans = ps.executeUpdate();
 	}
 	return ans;
+    }
+
+    @Override
+    public int validateEmail(Connection connection, String email) throws SQLException {
+	int ans = 0;
+	try (PreparedStatement ps = connection.prepareStatement("select * from user");
+		ResultSet resultset = ps.executeQuery()) {
+	    while (resultset.next()) {
+		if (email.equals(resultset.getString("email")) && resultset.getInt("status") == 1) {
+		    ans = 1;
+		    break;
+		}
+	    }
+
+	}
+	return ans;
+    }
+
+    @Override
+    public User checkLoginDetails(Connection connection, String email, String encryptpassword) throws SQLException {
+	User user = new User();
+	try (PreparedStatement ps = connection.prepareStatement("select * from user");
+		ResultSet resultset = ps.executeQuery()) {
+	    while (resultset.next()) {
+		if (email.equals(resultset.getString("email"))
+			&& encryptpassword.equals(resultset.getString("password")) && resultset.getInt("status") == 1) {
+		    user.setId(resultset.getInt(1));
+		    user.setName(resultset.getString("user_fullname"));
+		    user.setEmail(resultset.getString("email"));
+		    user.setContactno(resultset.getString("contactno"));
+		    user.setGender(resultset.getString("gender"));
+		    user.setPassword(resultset.getString("password"));
+		    user.setRole(resultset.getString("role"));
+		    user.setStatus(resultset.getInt("status"));
+		    break;
+		}
+	    }
+	}
+	return user;
     }
 }

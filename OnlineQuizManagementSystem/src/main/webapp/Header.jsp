@@ -1,3 +1,4 @@
+<%@page import="com.quizmanagementsystem.bean.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -37,6 +38,8 @@
 
 </head>
 <body>
+
+<%HttpSession httpSession = request.getSession(false);%>
 <!-- Header start -->
 <header id="header" class="header-two">
   <div class="site-navigation">
@@ -63,13 +66,7 @@
 
                       <li class="nav-item dropdown">
                           <a href="SignUp.jsp" class="nav-link">Sign Up</a>
-                         <!--  <ul class="dropdown-menu" role="menu">
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="team.html">Our People</a></li>
-                            <li><a href="testimonials.html">Testimonials</a></li>
-                            <li><a href="faq.html">Faq</a></li>
-                            <li><a href="pricing.html">Pricing</a></li>
-                          </ul> -->
+                         
                       </li>
               
                       <li class="nav-item dropdown">
@@ -114,10 +111,15 @@
                       </li>
               
                       <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-
+					<%if(null==httpSession.getAttribute("Logindetails")){ %>
                       <li class="header-get-a-quote">
                           <a class="btn btn-primary" href="Login.jsp">Log in</a>
                       </li>
+                      <%}else{ %>
+                      <li class="header-get-a-quote">
+                          <a class="btn btn-primary" href="LoginDetailsServlet">Log out</a>
+                      </li>
+                      <%} %>
                     </ul>
                 </div>
               </nav>

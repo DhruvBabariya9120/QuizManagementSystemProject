@@ -9,4 +9,8 @@ import com.quizmanagementsystem.bean.User;
 public interface UserService {
 
     public String saveUserDetails(User user);
+
+    public int Checkemaildetails(String email);
+
+    public User verifyLoginDetails(String email, String encryptpassword);
 }
