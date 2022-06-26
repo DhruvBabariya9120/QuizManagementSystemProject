@@ -77,7 +77,5 @@ public class UserRegistrationServlet extends HttpServlet {
 	request.setAttribute("message", ans);
 	RequestDispatcher dispacher = request.getRequestDispatcher("Login.jsp");
 	dispacher.forward(request, response);
-
     }
-
 }

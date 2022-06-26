@@ -48,9 +48,9 @@
           <div class="col-lg-12">
               <nav class="navbar navbar-expand-lg navbar-light p-0">
                 
-                <div class="logo">
-                    <a class="d-block" href="Index.jsp">
-                      <img loading="lazy" width="100px" src="image/logo.png" alt="Constra">
+                <div>
+                    <a href="Index.jsp">
+                      <img loading="lazy" style="margin-left: 40px" src="image/logo4.png" alt="Constra">
                     </a>
                 </div><!-- logo end -->
 
@@ -58,55 +58,29 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 
+                
                 <div id="navbar-collapse" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav ml-auto align-items-center">
+ 					
                       <li class="nav-item dropdown active">
                           <a href="Index.jsp" class="nav-link">Home</a>
                       </li>
-
                       <li class="nav-item dropdown">
                           <a href="SignUp.jsp" class="nav-link">Sign Up</a>
                          
                       </li>
               
                       <li class="nav-item dropdown">
-                          <a href="#" class="nav-link">Projects</a>
-                          <!-- <ul class="dropdown-menu" role="menu">
-                            <li><a href="projects.html">Projects All</a></li>
-                            <li><a href="projects-single.html">Projects Single</a></li>
-                          </ul> -->
-                      </li>
-              
-                      <li class="nav-item dropdown">
-                          <a href="#" class="nav-link">Services <i class="fa fa-angle-down"></i></a>
-                         <!--  <ul class="dropdown-menu" role="menu">
-                            <li><a href="services.html">Services All</a></li>
-                            <li><a href="service-single.html">Services Single</a></li>
-                          </ul> -->
-                      </li>
-              
-                      <li class="nav-item dropdown">
-                          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Features <i class="fa fa-angle-down"></i></a>
+                          <a href="InsertCategory.jsp" class="nav-link">Insert Category<i class="fa fa-angle-down"></i></a>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a href="typography.html">Typography</a></li>
-                            <li><a href="404.html">404</a></li>
-                            <li class="dropdown-submenu">
-                                <a href="#!" class="dropdown-toggle" data-toggle="dropdown">Parent Menu</a>
-                                <ul class="dropdown-menu">
-                                  <li><a href="#!">Child Menu 1</a></li>
-                                  <li><a href="#!">Child Menu 2</a></li>
-                                  <li><a href="#!">Child Menu 3</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="DisplaycategoryServlet">CategoryList</a></li>
                           </ul>
                       </li>
               
                       <li class="nav-item dropdown">
-                          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">News <i class="fa fa-angle-down"></i></a>
+                          <a href="InsertQuestion.jsp" class="nav-link">Insert Questions <i class="fa fa-angle-down"></i></a>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a href="news-left-sidebar.html">News Left Sidebar</a></li>
-                            <li><a href="news-right-sidebar.html">News Right Sidebar</a></li>
-                            <li><a href="news-single.html">News Single</a></li>
+                            <li><a href="QuestionList.jsp">Question List</a></li>
                           </ul>
                       </li>
               
