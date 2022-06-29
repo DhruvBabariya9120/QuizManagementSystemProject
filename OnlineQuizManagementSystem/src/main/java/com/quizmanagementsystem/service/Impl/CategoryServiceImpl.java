@@ -95,4 +95,16 @@ public class CategoryServiceImpl implements CategoryService {
 
     }
 
+    @Override
+    public int changeCategoryStatus(String id) {
+	int ans = 0;
+	try (Connection connection = getConnection()) {
+
+	    ans = categoryDao.modifyCategoryStatus(connection, id);
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
+	return ans;
+    }
+
 }

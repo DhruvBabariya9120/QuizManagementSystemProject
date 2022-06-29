@@ -41,4 +41,11 @@ public interface QuestionDao {
      */
     int editQuestionDetail(Connection connection, Question questions) throws SQLException;
 
+    /**
+     * @param connection
+     * @param id
+     * @return
+     */
+    int modifyQuestionStatus(Connection connection, String id) throws SQLException;
+
 }

@@ -96,4 +96,15 @@ public class QuestionServiceImpl implements QuestionService {
 	return ans;
     }
 
+    @Override
+    public int changeQuestionStatus(String id) {
+	int ans = 0;
+	try (Connection connection = getConnection()) {
+	    ans = questiondao.modifyQuestionStatus(connection, id);
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
+	return ans;
+    }
+
 }

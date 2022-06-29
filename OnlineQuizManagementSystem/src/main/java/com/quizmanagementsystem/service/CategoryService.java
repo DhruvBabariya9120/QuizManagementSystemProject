@@ -20,4 +20,6 @@ public interface CategoryService {
 
     int modifyCategoryDetails(Category category);
 
+    int changeCategoryStatus(String id);
+
 }

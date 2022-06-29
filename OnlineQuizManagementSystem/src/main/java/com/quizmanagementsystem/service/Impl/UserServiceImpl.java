@@ -4,6 +4,8 @@ package com.quizmanagementsystem.service.Impl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.quizmanagementsystem.bean.User;
 import com.quizmanagementsystem.dao.UserDao;
@@ -74,6 +76,18 @@ public class UserServiceImpl implements UserService {
 
 	    user = userdao.checkLoginDetails(connection, email, encryptpassword);
 
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
+	return user;
+    }
+
+    @Override
+    public List<User> selectUserDetails() {
+	List<User> user = new ArrayList<>();
+	try (Connection connection = getConnection()) {
+
+	    user = userdao.selectUserDetails(connection);
 	} catch (SQLException e) {
 	    e.printStackTrace();
 	}

@@ -99,4 +99,30 @@ public class QuestionDaoImpl implements QuestionDao {
 	return ans;
     }
 
+    @Override
+    public int modifyQuestionStatus(Connection connection, String id) throws SQLException {
+	int ans = 0;
+	int status = 0;
+	try (PreparedStatement ps = connection.prepareStatement("select * from question_answer where question_id=?")) {
+	    ps.setInt(1, Integer.parseInt(id));
+	    try (ResultSet resultset = ps.executeQuery()) {
+		while (resultset.next()) {
+		    status = resultset.getInt("status");
+		}
+	    }
+	}
+	if (status == 0) {
+	    status = 1;
+	} else {
+	    status = 0;
+	}
+	try (PreparedStatement ps1 = connection
+		.prepareStatement("update question_answer set status=? where question_id=?")) {
+	    ps1.setInt(1, status);
+	    ps1.setInt(2, Integer.parseInt(id));
+	    ans = ps1.executeUpdate();
+	}
+	return ans;
+    }
+
 }

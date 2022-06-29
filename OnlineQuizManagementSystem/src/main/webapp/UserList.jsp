@@ -1,4 +1,5 @@
-<%@page import="com.quizmanagementsystem.bean.Category"%>
+<%@page import="com.quizmanagementsystem.service.Impl.UserServiceImpl"%>
+<%@page import="com.quizmanagementsystem.service.UserService"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -14,11 +15,17 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title -->
-<title>Display All Category</title>
+<title>Display All Users</title>
 
 <!-- Favicon -->
 <link rel="icon" href="img/core-img/favicon.ico">
 
+<style type="text/css" class="init">
+
+</style>
+<style type="text/css">
+
+</style>
 <!-- Core Stylesheet -->
 <link rel="stylesheet" href="style.css">
 <script src="js1/jquery.min.js"></script>
@@ -35,17 +42,13 @@
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap.min.css" />
 
-
-
-
 <link rel="stylesheet" href="css1/style.css">
+<script src="js1/jquery-2.2.4.min.js"></script> 
+<script type="text/javascript" lang="javascript"
+	src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	
+ 	<script src="js1/plugins.js"></script>
 
-<style type="text/css" class="init">
-
-</style>
-<style type="text/css">
-
-</style>
 
 <script type="text/javascript" class="init">
 	$(document).ready(function() {
@@ -57,12 +60,13 @@
 	
 	
 </script>
+
 <script type="text/javascript">
 		
 	function getid(catid){
 				
 		var cid=catid;
-		var strLink="DeleteCategoryServlet?id="+cid;
+		var strLink="deleteCategoryServlet?id="+cid;
 		document.getElementById("acceptid").setAttribute("href",strLink);
 
 	}
@@ -73,53 +77,64 @@
 
 <body>
 
-<%List<Category> categoryList=(List)request.getAttribute("Displaycategory"); %>
+<%UserService userService = new UserServiceImpl();
+ List<User> users = userService.selectUserDetails(); %>
 
 <!-- ##### Header Area Start ##### -->
 	<%@include file="Header.jsp"%>
 	<!-- ##### Header Area End ##### -->
+	
+
+	<!-- Preloader -->
+	<div class="preloader d-flex align-items-center justify-content-center">
+		<div class="preloader-circle"></div>
+		<div class="preloader-img">
+			<img src="img/core-img/leaf.png" alt="">
+		</div>
+	</div>
+
 
 	<!-- ##### Breadcrumb Area Start ##### -->
 	<div class="breadcrumb-area">
 		<!-- Top Breadcrumb Area -->
 		<div>
-			<h2 style="margin-left: 500px; margin-top: 20px">Category Details</h2>
+			<h2 style="margin-left: 500px; margin-top: 20px">User Details</h2>
 		</div>
-		
 	</div>
-		<div style="margin-left: 100px;">
-		<a href="InsertCategory.jsp" id="#btn"><button class="btn btn-primary">Add Category</button></a>
-		</div>
 		
 	<div style="padding: 50px;">
 	
-		<table id="example" class="table table-striped table-bordered nowrap" style="width: 100%; padding: 5px; margin-right: 100px;">
+		<table id="example" class="table table-striped table-bordered nowrap" style="width: 100%; padding: 10px; margin-right: 200px;">
 			<thead>
 				<tr>
-					<th>Category Id</th>
-					<th>Category Name</th>
-				<%-- 	<th>Category Status</th>  --%>
-					<th>Edit Category</th>
-					<th>Change Status</th>	
+					<th>User id</th>
+					<th>User Name</th>
+				 	<th>Email</th> 
+					<th>Gender</th>
+					<th>Phone no</th>
+					<th>Change status</th>
 				</tr>
 			</thead>
 						<%int cnt=0; %>
 					
 			<tbody>
 				<%
-					for (Category cat1 : categoryList) {	
+					for (User user : users) {	
 				%>
 				<tr>
 				<%cnt=cnt+1; %>
 					<td><%=cnt%></td>
-					<td><%=cat1.getName() %></td>
-					<td><a type="button" href="EditCategoryServlet?id=<%=cat1.getCat_id() %>"><i class="fa fa-edit" aria-hidden="true" style="color:green; cursor: pointer; font-size: 25px;"></i></a></td>
+					
+					<td><%=user.getName()%></td>
+					<td><%=user.getEmail()%></td>
+					<td><%=user.getGender()%></td>
+					<td><%=user.getContactno()%></td>
 					
 			<h1 id="id" style="backgroundcolor: black; "></h1>
-			<%if(cat1.getStatus()==1){ %>
-			<td>	<a type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getid(<%=cat1.getCat_id() %>);"><button class="btn btn-success" style="width: 100px; height: 30px; background-color:#70c745;">InActive</button></a></td>
+			<%if(user.getStatus()==1){ %>
+			<td>	<a type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getid(<%=user.getId() %>);"><button class="btn btn-success" style="width: 100px; height: 30px; background-color:#70c745;">InActive</button></a></td>
 		<%}else{ %>
-					<td>	<a type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getid(<%=cat1.getCat_id() %>);"><button class="btn btn-success" style="width: 100px; height: 30px; background-color:#ff0000;">Active</button></a></td>
+					<td><a type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getid(<%=user.getId()%>);"><button class="btn btn-success" style="width: 100px; height: 30px; background-color:#ff0000;">Active</button></a></td>
 		
 		<%} %>
 		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -132,10 +147,10 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body">Your All Questions Status will be Change?</div>
+					<div class="modal-body">Your All SubCategory and Product Status will be Change?</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary"
-							data-dismiss="modal" >Close</button>
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal" style="color:white; height: 30px; width: 50px; font-size: 15px;">Close</button>
 							
 							
 						<button   type="button" class="btn btn-primary">
@@ -144,32 +159,49 @@
 					</div>
 				</div>
 			</div>
-		</div>								
+		</div>
+		<%--<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">DELETE</button></td> --%>
+		<%--<td><button type="button" class="fa fa-trash" data-toggle="modal" data-target="#exampleModalCenter" aria-hidden="true" ></button></td> --%>
+	 <%-- 	<td class="action"><i class="fa fa-trash" data-toggle="modal" data-target="#exampleModalCenter" aria-hidden="true" style="color:red;cursor: pointer; font-size: 25px;"></i></td> --%>
+									
 	</tr>
 		<%}%>
 			</tbody>
 		</table>
 	</div>
 
-	
+	<!-- ##### Breadcrumb Area End ##### -->
+
+	<!-- ##### About Area Start ##### -->
+
+	<!-- ##### About Area End ##### -->
+
+	<!-- ##### Service Area Start ##### -->
+
+	<!-- ##### Service Area End ##### -->
+
 	<!-- ##### Testimonial Area Start ##### -->
 	<section class="testimonial-area section-padding-100" style="background-color: white;">
 		<div class="container">
 			
 		</div>
 	</section>
+	<!-- ##### Testimonial Area End ##### -->
+
+	<!-- ##### Cool Facts Area Start ##### -->
+	<!-- ##### Cool Facts Area End ##### -->
+
+	<!-- ##### Team Area Start ##### -->
+
+	<!-- ##### Team Area End ##### -->
+
 
 	<!-- ##### Footer Area Start ##### -->
 	<%@include file="Footer.jsp"%>
 	<!-- ##### Footer Area End ##### -->
-
-	<!-- Active js -->
 	<script src="js1/active.js"></script>
+
 	<script type="text/javascript" lang="javascript"
-	src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script src="js1/jquery-2.2.4.min.js"></script> 
- 	<script src="js1/plugins.js"></script>
-<script type="text/javascript" lang="javascript"
 	src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" lang="javascript"
 	src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
@@ -179,7 +211,7 @@
 	src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
 <script type="text/javascript" lang="javascript"
 	src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap.min.js"></script>
-	
+
 </body>
 
 </html>

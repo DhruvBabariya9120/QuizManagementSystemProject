@@ -74,4 +74,37 @@ public class CategoryDaoImpl implements CategoryDao {
 	return ans;
     }
 
+    @Override
+    public int modifyCategoryStatus(Connection connection, String id) throws SQLException {
+	int ans = 0;
+	int status = 0;
+	try (PreparedStatement ps = connection.prepareStatement("select * from category where category_id= ?")) {
+
+	    ps.setInt(1, Integer.parseInt(id));
+	    try (ResultSet resultset = ps.executeQuery()) {
+		while (resultset.next()) {
+		    status = resultset.getInt("status");
+		}
+	    }
+	}
+	if (status == 0) {
+	    status = 1;
+	} else {
+	    status = 0;
+	}
+	try (PreparedStatement ps1 = connection.prepareStatement("update category set status=? where category_id=?")) {
+	    ps1.setInt(1, status);
+	    ps1.setInt(2, Integer.parseInt(id));
+	    ans = ps1.executeUpdate();
+	}
+	try (PreparedStatement ps2 = connection
+		.prepareStatement("update question_answer set status=? where category_id=?")) {
+	    ps2.setInt(1, status);
+	    ps2.setInt(2, Integer.parseInt(id));
+
+	    ans = ps2.executeUpdate();
+	}
+	return ans;
+    }
+
 }

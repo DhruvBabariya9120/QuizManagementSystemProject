@@ -37,6 +37,12 @@ public interface QuestionService {
     int modifyQuestionDetails(Question questions);
 
     /**
+     * @param id
+     * @return
+     */
+    int changeQuestionStatus(String id);
+
+    /**
      * @return
      */
 

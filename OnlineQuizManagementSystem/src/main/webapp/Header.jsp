@@ -84,7 +84,7 @@
                           </ul>
                       </li>
               
-                      <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                      <li class="nav-item"><a class="nav-link" href="UserList.jsp">User List</a></li>
 					<%if(null==httpSession.getAttribute("Logindetails")){ %>
                       <li class="header-get-a-quote">
                           <a class="btn btn-primary" href="Login.jsp">Log in</a>

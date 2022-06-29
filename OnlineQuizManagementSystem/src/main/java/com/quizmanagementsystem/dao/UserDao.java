@@ -3,6 +3,7 @@ package com.quizmanagementsystem.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.quizmanagementsystem.bean.User;
 
@@ -16,4 +17,6 @@ public interface UserDao {
     public int validateEmail(Connection connection, String email) throws SQLException;
 
     public User checkLoginDetails(Connection connection, String email, String encryptpassword) throws SQLException;
+
+    public List<User> selectUserDetails(Connection connection) throws SQLException;
 }

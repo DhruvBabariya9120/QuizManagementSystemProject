@@ -130,7 +130,7 @@ $(document).ready(function(){
 				<div class="checkout-btn mt-30">
 					<button class="btn btn-primary" style="margin-left: 300px;">Insert Category</button>
 					
-					<a href="CategoryList.jsp" type="button" class="btn btn-primary" style="margin-left: 20px;">Back</a>
+					<a href="DisplaycategoryServlet" type="button" class="btn btn-primary" style="margin-left: 20px;">Back</a>
 				</div>
 
 			</form>

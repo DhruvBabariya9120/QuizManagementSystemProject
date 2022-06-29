@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.quizmanagementsystem.bean.User;
 import com.quizmanagementsystem.dao.UserDao;
@@ -69,5 +71,26 @@ public class UserDaoImpl implements UserDao {
 	    }
 	}
 	return user;
+    }
+
+    @Override
+    public List<User> selectUserDetails(Connection connection) throws SQLException {
+	List<User> user1 = new ArrayList<>();
+	try (PreparedStatement ps = connection.prepareStatement("select * from user")) {
+	    ResultSet resultset = ps.executeQuery();
+	    while (resultset.next()) {
+		User user = new User();
+		user.setId(resultset.getInt(1));
+		user.setName(resultset.getString("user_fullname"));
+		user.setEmail(resultset.getString("email"));
+		user.setContactno(resultset.getString("contactno"));
+		user.setGender(resultset.getString("gender"));
+		user.setPassword(resultset.getString("password"));
+		user.setRole(resultset.getString("role"));
+		user.setStatus(resultset.getInt("status"));
+		user1.add(user);
+	    }
+	}
+	return user1;
     }
 }

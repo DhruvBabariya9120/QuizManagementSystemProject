@@ -41,4 +41,11 @@ public interface CategoryDao {
      */
     int updateCategory(Connection connection, Category category) throws SQLException;
 
+    /**
+     * @param connection
+     * @param id
+     * @return
+     */
+    int modifyCategoryStatus(Connection connection, String id) throws SQLException;
+
 }

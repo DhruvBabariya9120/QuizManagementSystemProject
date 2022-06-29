@@ -51,21 +51,6 @@
 <style type="text/css">
 
 </style>
-<script type="text/javascript" lang="javascript"
-	src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script src="js1/jquery-2.2.4.min.js"></script> 
- 	<script src="js1/plugins.js"></script>
-<script type="text/javascript" lang="javascript"
-	src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" lang="javascript"
-	src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript" lang="javascript"
-	src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js"></script>
-<script type="text/javascript" lang="javascript"
-	src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
-<script type="text/javascript" lang="javascript"
-	src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap.min.js"></script>
-
 <script type="text/javascript" class="init">
 	$(document).ready(function() {
 		var table = $('#example').DataTable({
@@ -81,7 +66,7 @@
 	function getid(catid){
 				
 		var cid=catid;
-		var strLink="deleteCategoryServlet?id="+cid;
+		var strLink="DeleteQuestionServlet?id="+cid;
 		document.getElementById("acceptid").setAttribute("href",strLink);
 
 	}
@@ -125,12 +110,12 @@ List<Question> questionList=(List) questionService.selectQuestionDetails(); %>
 		
 	<div style="padding: 50px;">
 	
-		<table id="example" class="table table-striped table-bordered nowrap" style="width: 100%; padding: 10px; margin-right: 200px;">
+		<table id="example" class="table table-striped table-bordered nowrap" style="width: 90%; padding: 10px; margin-right: 200px;">
 			<thead>
 				<tr>
-					<th>Question Id</th>
-					<th>Category Name</th>
-				 	<th>Question Name</th> 
+					<th>Id</th>
+					<th>Category</th>
+				 	<th>Question</th> 
 					<th>Option-1</th>
 					<th>Option-2</th>
 					<th>Option-3</th>
@@ -178,10 +163,10 @@ List<Question> questionList=(List) questionService.selectQuestionDetails(); %>
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body">Your All SubCategory and Product Status will be Change?</div>
+					<div class="modal-body">Your Question Status will be Change?</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal" style="color:white; height: 30px; width: 50px; font-size: 15px;">Close</button>
+						<button type="button" class="btn btn-primary"
+							data-dismiss="modal" >Close</button>
 							
 							
 						<button   type="button" class="btn btn-primary">
@@ -190,11 +175,7 @@ List<Question> questionList=(List) questionService.selectQuestionDetails(); %>
 					</div>
 				</div>
 			</div>
-		</div>
-		<%--<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">DELETE</button></td> --%>
-		<%--<td><button type="button" class="fa fa-trash" data-toggle="modal" data-target="#exampleModalCenter" aria-hidden="true" ></button></td> --%>
-	 <%-- 	<td class="action"><i class="fa fa-trash" data-toggle="modal" data-target="#exampleModalCenter" aria-hidden="true" style="color:red;cursor: pointer; font-size: 25px;"></i></td> --%>
-									
+		</div>						
 	</tr>
 		<%}%>
 			</tbody>
@@ -231,6 +212,21 @@ List<Question> questionList=(List) questionService.selectQuestionDetails(); %>
 	<%@include file="Footer.jsp"%>
 	<!-- ##### Footer Area End ##### -->
 	<script src="js1/active.js"></script>
+	<script type="text/javascript" lang="javascript"
+	src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="js1/jquery-2.2.4.min.js"></script> 
+ 	<script src="js1/plugins.js"></script>
+<script type="text/javascript" lang="javascript"
+	src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" lang="javascript"
+	src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" lang="javascript"
+	src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js"></script>
+<script type="text/javascript" lang="javascript"
+	src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript" lang="javascript"
+	src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap.min.js"></script>
+	
 </body>
 
 </html>
