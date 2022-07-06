@@ -129,4 +129,54 @@
     <servlet-name>DeleteQuestionServlet</servlet-name>
     <url-pattern>/DeleteQuestionServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DisplayQuizQuestionServlet</display-name>
+    <servlet-name>DisplayQuizQuestionServlet</servlet-name>
+    <servlet-class>com.quizmanagementsystem.servlet.DisplayQuizQuestionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DisplayQuizQuestionServlet</servlet-name>
+    <url-pattern>/DisplayQuizQuestionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PageinationServlet</display-name>
+    <servlet-name>PageinationServlet</servlet-name>
+    <servlet-class>com.quizmanagementsystem.servlet.PageinationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PageinationServlet</servlet-name>
+    <url-pattern>/PageinationServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CategoryDetailsServlet</display-name>
+    <servlet-name>CategoryDetailsServlet</servlet-name>
+    <servlet-class>com.quizmanagementsystem.servlet.CategoryDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CategoryDetailsServlet</servlet-name>
+    <url-pattern>/CategoryDetailsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CategoryDetailServlet</display-name>
+    <servlet-name>CategoryDetailServlet</servlet-name>
+    <servlet-class>com.quizmanagementsystem.servlet.CategoryDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CategoryDetailServlet</servlet-name>
+    <url-pattern>/CategoryDetailServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DisplayAllQuizResultServlet</display-name>
+    <servlet-name>DisplayAllQuizResultServlet</servlet-name>
+    <servlet-class>com.quizmanagementsystem.servlet.DisplayAllQuizResultServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DisplayAllQuizResultServlet</servlet-name>
+    <url-pattern>/DisplayAllQuizResultServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -43,6 +43,12 @@ public interface QuestionService {
     int changeQuestionStatus(String id);
 
     /**
+     * @param catId
+     * @return
+     */
+    List<Question> findQuestionDetails(int catId);
+
+    /**
      * @return
      */
 

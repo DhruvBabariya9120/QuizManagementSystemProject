@@ -107,4 +107,21 @@ public class QuestionServiceImpl implements QuestionService {
 	return ans;
     }
 
+    @Override
+    public List<Question> findQuestionDetails(int catId) {
+	List<Question> questionList = new ArrayList<>();
+	try (Connection connection = getConnection()) {
+
+	    List<Question> queList = questiondao.fetchQuestionDetails(connection);
+	    for (Question question : queList) {
+		if (question.getCat_id() == catId && question.getStatus() == 1) {
+		    questionList.add(question);
+		}
+	    }
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
+	return questionList;
+    }
+
 }

@@ -42,7 +42,6 @@
   <div class="banner-carousel-item" style="background-image:url(image/Backgroundimag.png)">
     <div class="container">
         <h1 style="color: white; padding: 200px; padding-top: 270px; padding-left: 270px; font-size:35px">Welcome to Online Quiz System</h1>
-        <h2 style="color: white; padding: 200px; padding-top: 350px; padding-left: 270px;">Good Luck</h2>        
         </div>
     </div>
   </div>
