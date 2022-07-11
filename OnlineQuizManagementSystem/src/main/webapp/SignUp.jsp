@@ -14,6 +14,7 @@
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" href="css1/style1.css" />
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -64,11 +65,11 @@
 </head>
 
 <body
-	style="background-image: url('image/Backgroundpage.jpg'); background-repeat: no-repeat; background-size: 1500px">
-	<%@include file="Header.jsp"%>
+	style="background-image: url('image/Backgroundpage.jpg'); background-repeat: no-repeat; background-size: 1485px">
+	<%-- <%@include file="Header.jsp"%> --%>
 	<div class="container">
 		<div class="back"
-			style="background-color: #FFFFFF; margin-top: 20px; width: 650px; padding: 40px; margin-left: 250px; border-radius: 70px">
+			style="background-color: #e5e5e5; margin-top: 90px; width: 700px; margin-left:5px; padding: 65px; border-radius: 70px">
 
 			<form class="form validity" action="UserRegistrationServlet"
 				method="post">
@@ -125,10 +126,13 @@
 						pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required><br>
 
 					<input type="checkbox" onclick="myFunction()"> Show
-					Password <a href="Login.jsp" style="color: blue">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-						&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+					Password <a href="Login.jsp" style="margin-left: 230px; color: blue;">                                            
 						Already have an Account?</a>
+					
 				</div>
+				<div class="form-group simple">
+				
+						</div>
 
 
 				<button class="btn btn-block btn-primary" type="submit">Submit</button>

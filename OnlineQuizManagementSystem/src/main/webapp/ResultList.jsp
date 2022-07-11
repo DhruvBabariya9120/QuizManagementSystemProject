@@ -16,7 +16,7 @@
 <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 <!-- Title -->
-<title>Display All Played Quiz</title>
+<title>Display All Result Details</title>
 
 <!-- Favicon -->
 <link rel="icon" href="img/core-img/favicon.ico">
@@ -80,20 +80,22 @@
 
 <jsp:include page="/DisplayAllQuizResultServlet"/>
 
-<% List<Category> categoryList = (List) request.getAttribute("CategoryList");
-	List<ResultDetails> resultList = (List) request.getAttribute("ResultList");
+<%UserService userService = new UserServiceImpl();
+ List<User> users = userService.selectUserDetails();
+ 
+ List<ResultDetails> resultList =(List)request.getAttribute("resultList");
+ List<Category> categoryList = (List) request.getAttribute("CategoryList");
 %>
 
 <!-- ##### Header Area Start ##### -->
 	<%@include file="Header.jsp"%>
 	<!-- ##### Header Area End ##### -->
 
-	<%if(resultList.size()!=0){ %>
 	<!-- ##### Breadcrumb Area Start ##### -->
 	<div class="breadcrumb-area">
 		<!-- Top Breadcrumb Area -->
 		<div>
-			<h2 style="margin-left: 500px; margin-top: 20px">Quiz Result Details</h2>
+			<h2 style="margin-left: 500px; margin-top: 20px">Result Details</h2>
 		</div>
 	</div>
 		
@@ -102,51 +104,50 @@
 		<table id="example" class="table table-striped table-bordered nowrap" style="width: 100%; padding: 10px; margin-right: 200px;">
 			<thead>
 				<tr>
-					<th>Sr.no</th>
-					<th>Category Name</th>
-				 	<th>Total Marks</th>
-				 	<th>Right Answer</th> 
+					<th>Sr. no</th>
+					<th>User Name</th>
+				 	<th>Category Name</th> 
+					<th>Right Answer</th>
+					<th>Total Marks</th>
 					<th>Performance</th>
-					
 				</tr>
 			</thead>
 						<%int cnt=0; %>
 					
 			<tbody>
 				<%
-					for (ResultDetails resultdetails : resultList) {	
+					for (ResultDetails resultDetails : resultList) {	
 				%>
 				<tr>
 				<%cnt=cnt+1; %>
 					<td><%=cnt%></td>
-					<%for(Category cat : categoryList) {
-					if(cat.getCat_id()==resultdetails.getCatId()){%>
+					<%for(User user : users){
+					    if(user.getId()==resultDetails.getUserId()){%>
+					<td><%=user.getName() %></td>
+					<%} }%>
+					<%for(Category cat: categoryList){ 
+					if(cat.getCat_id() == resultDetails.getCatId()){ %>			
 					<td><%=cat.getName()%></td>
 					<%}} %>
-					<td><%=resultdetails.getTotalmarks()%></td>
-					<td><%=resultdetails.getObtainmarks()%></td>
-					<td><%=resultdetails.getPerformance()%></td>
-		</div>
-								
+					<td><%=resultDetails.getObtainmarks() %> </td>
+					<td><%=resultDetails.getTotalmarks() %></td>
+					<td><%=resultDetails.getPerformance() %></td>							
 	</tr>
 		<%}%>
 			</tbody>
 		</table>
 	</div>
-	<%}else{ %>
-	<div class="d-flex align-items-center justify-content-center vh-100">
-            <div class="text-center">
-                <h1 class="display-1 fw-bold"
-					style="font-weight: bold; font-size: 50px; margin-top: 0px; text-align: center; margin-bottom: 30px;">
-                Quiz Result </h1>
-                <p class="fs-3"> <span class="text-danger">Opps!...</span> You Have not Played Any Quiz</p>
-                <p class="lead">
-                     Please Play Quiz first of all 
-                  </p>
-                <a href="Index.jsp" class="btn btn-primary">Go Home</a>
-            </div>
-        </div>
-	<%} %>
+
+	<!-- ##### Breadcrumb Area End ##### -->
+
+	<!-- ##### About Area Start ##### -->
+
+	<!-- ##### About Area End ##### -->
+
+	<!-- ##### Service Area Start ##### -->
+
+	<!-- ##### Service Area End ##### -->
+
 	<!-- ##### Testimonial Area Start ##### -->
 	<section class="testimonial-area section-padding-100" style="background-color: white;">
 		<div class="container">
@@ -155,7 +156,13 @@
 	</section>
 	<!-- ##### Testimonial Area End ##### -->
 
-	
+	<!-- ##### Cool Facts Area Start ##### -->
+	<!-- ##### Cool Facts Area End ##### -->
+
+	<!-- ##### Team Area Start ##### -->
+
+	<!-- ##### Team Area End ##### -->
+
 
 	<!-- ##### Footer Area Start ##### -->
 	<%@include file="Footer.jsp"%>

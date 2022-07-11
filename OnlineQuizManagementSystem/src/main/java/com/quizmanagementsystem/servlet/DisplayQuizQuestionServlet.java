@@ -49,11 +49,12 @@ public class DisplayQuizQuestionServlet extends HttpServlet {
 	    dispacher.forward(request, response);
 	} else {
 	    question = questionList.get(0);
-
+	    int cnt = 0;
 	    int lastQuestion = 0;
 	    if (questionList.size() == 1) {
 		lastQuestion = 1;
 	    }
+	    request.setAttribute("counter", cnt);
 	    request.setAttribute("SelectedQuestion", question);
 	    request.setAttribute("message", message);
 	    request.setAttribute("CategoryId", catId);

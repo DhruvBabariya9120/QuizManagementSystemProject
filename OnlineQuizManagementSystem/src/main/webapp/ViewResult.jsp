@@ -40,8 +40,25 @@
 <!-- Favicon -->
 <link rel="icon" href="img/core-img/favicon.ico">
 
-<script src="js1/jquery.min.js"></script>
+<script src="js1/jquery.min.js">
+</script>
+<script type="text/javascript">
 
+function switchVisible() {
+    if (document.getElementById('result')) {
+
+        if (document.getElementById('result').style.display == 'none') {
+            document.getElementById('result').style.display = 'block';
+        }
+        else {
+            document.getElementById('result').style.display = 'none';
+        }
+    }
+}
+
+
+
+</script>
 
 </head>
 
@@ -50,7 +67,7 @@
 	<%@include file="Header.jsp"%>
 	<div class="container">
 		<div class="back"
-			style="background-color: #FFFFFF; margin-top: 20px; width: 650px; padding: 40px; margin-left: 250px; border-radius: 70px">
+			style="background-color: #A6F0F7; margin-top: 20px; width: 650px; padding: 40px; margin-left: 250px; border-radius: 70px">
 			<%
 			ResultDetails resultDetails = (ResultDetails)request.getAttribute("ResultData");
 			   List<Question> questionList = (List)request.getAttribute("QuestionList");
@@ -79,11 +96,13 @@
 				</h3>
 		<h2>TOtal Marks = <%=resultDetails.getObtainmarks()%>/<%=resultDetails.getTotalmarks() %> </h2>	
 		<h2>Performance = <%=resultDetails.getPerformance()%></h2>	
-		<br><h3>All Right Answer given below</h3>
+		<br><input id="Button1" class="btn btn-primary" type="button" style="margin-left: 100px" value="Show All Right Answer" onclick="switchVisible();"/>
+	
+	<div id="result" style="display: none; ">	
 		<%int cnt = 0; %>
 		<%for(Question question : questionList){ %>
 			<%cnt++; %>
-				<div class="form-group">
+				<br><div class="form-group">
 				<label style="color: black;" class="form-control"><%=cnt%>&emsp;<%=question.getQuestion()%></label>
 				</div>
 				<div class="form-check" <%if(question.getAnswer().equalsIgnoreCase(question.getOption1())){ %>
@@ -111,10 +130,10 @@
 				<br>
 			<%} %>
 				<br><br><div class="form-group row">
-				<a class="btn btn-block btn-primary" type="submit" href="Index.jsp">Back</a>
+				<a class="btn btn-primary" type="submit" style="margin-left: 240px" href="Index.jsp">Back</a>
 				</div>
 				</form>
-			
+	</div>			
 		</div>
 
 

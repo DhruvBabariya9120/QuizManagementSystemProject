@@ -28,34 +28,31 @@
 <link rel="stylesheet" href="css1/style.css">
 <script src="js1/jquery.min.js"></script>
 <script>
+	$(document).ready(function() {
 
-$(document).ready(function(){
-	
-	$("#id-cat").blur(function(){
-		
-		var a=$("#id-cat").val();
-		
-		$.get("InsertCategoryServlet", {
-			catname : a
-		}).done(function(data) {
+		$("#id-cat").change(function() {
 
-			if (data == 'true') {
-				
-				$('#error').html("This Category is already exist");
-				/* $(document).ready(function() {
-					$("#id-cat").val('').focus();
-				}); */
-			}
+			var a = $("#id-cat").val();
+
+			$.get("InsertCategoryServlet", {
+				catname : a
+			}).done(function(data) {
+
+				if (data == 'true') {
+
+					$('#error').html("This Category is already exist");
+					$(document).ready(function() {
+						$("#id-cat").val('').focus();
+					});
+				}
+			});
 		});
 	});
-});
-
-
 </script>
 </head>
 
 <body>
-	
+
 	<!-- Preloader -->
 	<div class="preloader d-flex align-items-center justify-content-center">
 		<div class="preloader-circle"></div>
@@ -82,7 +79,8 @@ $(document).ready(function(){
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="#"><i
 									class="fa fa-home"></i> Home</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Insert Category</li>
+							<li class="breadcrumb-item active" aria-current="page">Insert
+								Category</li>
 						</ol>
 					</nav>
 				</div>
@@ -96,45 +94,53 @@ $(document).ready(function(){
 		<div class="back"
 			style="background-color: white; margin-top: auto; width: 650px; padding: auto; border-radius: 70px; margin-left: 200px;">
 
-			<form class="form validity" action="InsertCategoryServlet" method="post">
-				
-				<h1 style="font-weight: bold; font-size: 30px; text-align: center; margin-bottom: 30px;">Insert Category</h1>
-				
-				
-				
+			<form class="form validity" action="InsertCategoryServlet"
+				method="post">
+
+				<h1
+					style="font-weight: bold; font-size: 30px; text-align: center; margin-bottom: 30px;">Insert
+					Category</h1>
+
+
+
 				<div class="form-group">
 
 					<div class="col-12 mb-4">
-						
-						<label  style="font-size: 20px; margin-right: 200px; padding: 2px;">Enter Category Name</label> 
-						
-						<input id="id-cat" name="categoryname" class="form-control input-group-lg reg_name" data-missing="This field is required" type="text" required style="width: 500px;">
-				
+
+						<label style="font-size: 20px; margin-right: 200px; padding: 2px;">Enter
+							Category Name</label> <input id="id-cat" name="categoryname"
+							class="form-control input-group-lg reg_name"
+							data-missing="This field is required" type="text" required
+							style="width: 500px;">
+
 					</div>
-					
-				</div>
-				<span id="error" style="color:red"></span>
-				
-				
-					<%
-						String s = (String) request.getAttribute("message");
-					if (null != s) {
-					%>
-					<h4
-						style="font-weight: bold; font-size: 20px; color: green; font-color: green; margin-left: 150px;"><%=s%></h4>
-					<%
-						}
-					%>
-				</div>
 
-				<div class="checkout-btn mt-30">
-					<button class="btn btn-primary" style="margin-left: 300px;">Insert Category</button>
-					
-					<a href="DisplaycategoryServlet" type="button" class="btn btn-primary" style="margin-left: 20px;">Back</a>
 				</div>
+				<span id="error" style="color: red"></span>
 
-			</form>
+
+				<%
+				String s = (String) request.getAttribute("message");
+				if (null != s) {
+				%>
+				<h4
+					style="font-weight: bold; font-size: 20px; color: green; font-color: green; margin-left: 150px;"><%=s%></h4>
+				<%
+				}
+				%>
+			
 		</div>
+
+		<div class="checkout-btn mt-30">
+			<button class="btn btn-primary" style="margin-left: 300px;">Insert
+				Category</button>
+
+			<a href="DisplaycategoryServlet" type="button"
+				class="btn btn-primary" style="margin-left: 20px;">Back</a>
+		</div>
+
+		</form>
+	</div>
 	</div>
 
 
@@ -150,11 +156,10 @@ $(document).ready(function(){
 	<!-- ##### Service Area End ##### -->
 
 	<!-- ##### Testimonial Area Start ##### -->
-	
-	<section class="testimonial-area section-padding-100" style="background-color: white;">
-		<div class="container">
-			
-			</div>
+
+	<section class="testimonial-area section-padding-100"
+		style="background-color: white;">
+		<div class="container"></div>
 	</section>
 	<!-- ##### Testimonial Area End ##### -->
 
@@ -173,7 +178,7 @@ $(document).ready(function(){
 	<!-- ##### All Javascript Files ##### -->
 	<!-- jQuery-2.2.4 js -->
 	<script src="js1/jquery-2.2.4.min.js"></script>
-<!-- 	Popper js -->
+	<!-- 	Popper js -->
 	<script src="plugins/bootstrap/popper.min.js"></script>
 	<!-- Bootstrap js -->
 	<script src="plugins/bootstrap/bootstrap.min.js"></script>

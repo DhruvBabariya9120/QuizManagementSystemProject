@@ -17,7 +17,8 @@
 
 
 <!-- Main Stylesheet -->
-<link rel="stylesheet" href="css/style">
+
+
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,7 +29,8 @@
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-<link rel="stylesheet" href="css1/style1.css" />
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css1/style1.css"/>
 
 
 <!--[if lt IE 9]>
@@ -40,14 +42,14 @@
 
 </head>
 
-<body
-	style="background-image: url('image/Backgroundpage.jpg'); background-repeat: no-repeat; background-size: 1500px;">
-	<%@include file="Header.jsp"%>
+<body class="banner-carousel-item"
+	style="background-image: url('image/Backgroundpage.jpg'); background-repeat: no-repeat; background-size: 1450px;">
+	<%-- <%@include file="Header.jsp"%> --%>
 	<div class="container">
 
 
 		<div class="back"
-			style="background-color: #e5e5e5; margin-top: 20px; width: 650px; padding: 40px; margin-left: 250px; border-radius: 70px">
+			style="background-color: #e5e5e5; margin-top: 90px; width: 680px; padding: 60px; border-radius: 70px">
 
 			<h4
 				style="font-weight: bold; font-size: 20px; color: green; font-color: green; text-align: center"></h4>

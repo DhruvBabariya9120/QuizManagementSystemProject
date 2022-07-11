@@ -28,7 +28,7 @@
           <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
             <h3 class="widget-title">QuickLink</h3>
             <ul class="list-arrow">
-              <li><a href="ShowAllPlayedQuiz">Show Results</a></li>
+              <li><a href="ShowAllPlayedQuiz.jsp">Show Results</a></li>
             </ul>
           </div><!-- Col end -->
         </div><!-- Row end -->

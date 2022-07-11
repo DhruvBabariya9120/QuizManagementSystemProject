@@ -107,12 +107,11 @@
 		<table id="example" class="table table-striped table-bordered nowrap" style="width: 100%; padding: 10px; margin-right: 200px;">
 			<thead>
 				<tr>
-					<th>User id</th>
+					<th>Sr. no</th>
 					<th>User Name</th>
 				 	<th>Email</th> 
 					<th>Gender</th>
 					<th>Phone no</th>
-					<th>Change status</th>
 				</tr>
 			</thead>
 						<%int cnt=0; %>
@@ -128,42 +127,7 @@
 					<td><%=user.getName()%></td>
 					<td><%=user.getEmail()%></td>
 					<td><%=user.getGender()%></td>
-					<td><%=user.getContactno()%></td>
-					
-			<h1 id="id" style="backgroundcolor: black; "></h1>
-			<%if(user.getStatus()==1){ %>
-			<td>	<a type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getid(<%=user.getId() %>);"><button class="btn btn-success" style="width: 100px; height: 30px; background-color:#70c745;">InActive</button></a></td>
-		<%}else{ %>
-					<td><a type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getid(<%=user.getId()%>);"><button class="btn btn-success" style="width: 100px; height: 30px; background-color:#ff0000;">Active</button></a></td>
-		
-		<%} %>
-		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLongTitle">ARE YOU SURE YOU WANT TO CHANGE STATUS ??</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">Your All SubCategory and Product Status will be Change?</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal" style="color:white; height: 30px; width: 50px; font-size: 15px;">Close</button>
-							
-							
-						<button   type="button" class="btn btn-primary">
-						<a style=" color: white; " id="acceptid">Change</a>
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<%--<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">DELETE</button></td> --%>
-		<%--<td><button type="button" class="fa fa-trash" data-toggle="modal" data-target="#exampleModalCenter" aria-hidden="true" ></button></td> --%>
-	 <%-- 	<td class="action"><i class="fa fa-trash" data-toggle="modal" data-target="#exampleModalCenter" aria-hidden="true" style="color:red;cursor: pointer; font-size: 25px;"></i></td> --%>
-									
+					<td><%=user.getContactno()%></td>							
 	</tr>
 		<%}%>
 			</tbody>

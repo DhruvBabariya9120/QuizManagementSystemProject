@@ -1,14 +1,19 @@
 package com.quizmanagementsystem.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.quizmanagementsystem.bean.PasswordConvert;
+import com.quizmanagementsystem.bean.User;
 import com.quizmanagementsystem.service.UserService;
 import com.quizmanagementsystem.service.Impl.UserServiceImpl;
+import com.quizmanagementsystem.util.SendEmail;
 
 /**
  * Servlet implementation class ForgetpasswordServlet
@@ -52,8 +57,26 @@ public class ForgetpasswordServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
-	// TODO Auto-generated method stub
-	doGet(request, response);
+	String email = request.getParameter("email");
+
+	List<User> userList = service.selectUserDetails();
+
+	String password = null;
+	for (User user : userList) {
+	    if (user.getEmail().equals(email)) {
+		password = user.getPassword();
+	    }
+	}
+	PasswordConvert ps = new PasswordConvert();
+	String originalPassword = ps.decrypt(password);
+	SendEmail sendEmail = new SendEmail();
+	String msg = " Your Password  = " + originalPassword;
+	sendEmail.senmail(email, msg);
+	Thread t1 = new Thread(sendEmail);
+	t1.start();
+	request.setAttribute("message", "Password Send in Your Email Successfully");
+	RequestDispatcher dispacher = request.getRequestDispatcher("Login.jsp");
+	dispacher.forward(request, response);
     }
 
 }

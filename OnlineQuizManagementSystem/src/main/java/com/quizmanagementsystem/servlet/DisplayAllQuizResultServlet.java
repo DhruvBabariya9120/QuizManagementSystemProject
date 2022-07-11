@@ -45,12 +45,10 @@ public class DisplayAllQuizResultServlet extends HttpServlet {
 	List<Category> categoryList = catService.selectCategoryDetails();
 	HttpSession session = request.getSession(false);
 	User u = (User) session.getAttribute("Logindetails");
+	List<ResultDetails> result = resultService.selectResultDetails();
 	List<ResultDetails> resultList = resultService.findUserResultDetails(u.getId());
 	request.setAttribute("CategoryList", categoryList);
-	for (ResultDetails result : resultList) {
-	    System.out.println(result);
-	}
-	System.out.println();
+	request.setAttribute("resultList", result);
 	request.setAttribute("ResultList", resultList);
     }
 

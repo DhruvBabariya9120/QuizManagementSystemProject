@@ -44,15 +44,14 @@
 
 </head>
 <body>
-<jsp:include page="/CategoryDetailsServlet" />
+	<jsp:include page="/CategoryDetailsServlet" />
 
 	<%
 	HttpSession httpSession = request.getSession(false);
 	User u = (User) httpSession.getAttribute("Logindetails");
 	%>
 	<%
-	List<Category> catList =(List) request.getAttribute("CategoryDetails");
-	
+	List<Category> catList = (List) request.getAttribute("CategoryDetails");
 	%>
 	<!-- Header start -->
 	<header id="header" class="header-two">
@@ -101,11 +100,12 @@
 
 
 									<li class="nav-item dropdown"><a href="QuestionList.jsp"
-										class="nav-link">Question List</a>
-									</li>
+										class="nav-link">Question List</a></li>
 
 									<li class="nav-item"><a class="nav-link"
 										href="UserList.jsp">User List</a></li>
+									<li class="nav-item dropdown"><a href="ResultList.jsp"
+										class="nav-link">Result Details</a></li>
 									<%
 									}
 									if (u.getRole().equals("user")) {
@@ -124,8 +124,9 @@
 											}
 											%>
 										</ul></li>
-										<li class="nav-item dropdown"><a href="ShowAllPlayedQuiz.jsp" class="nav-link">Show Results</a>
-										</li>
+									<li class="nav-item dropdown"><a
+										href="ShowAllPlayedQuiz.jsp" class="nav-link">Show Results</a>
+									</li>
 									<%
 									}
 									%>

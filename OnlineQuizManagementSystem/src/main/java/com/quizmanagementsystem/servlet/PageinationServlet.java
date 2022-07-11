@@ -81,6 +81,7 @@ public class PageinationServlet extends HttpServlet {
 	int cnt = 0;
 	int totalQuestion = 0;
 	answer.add(value);
+	int cnt1 = answer.size();
 	System.out.println("answer = " + answer);
 	request.setAttribute("LastQuestion", lastQuestion);
 	request.setAttribute("CategoryId", id);
@@ -88,6 +89,7 @@ public class PageinationServlet extends HttpServlet {
 	if (buttonname == null) {
 	    Question que = questionList.get(index);
 	    request.setAttribute("SelectedQuestion", que);
+	    request.setAttribute("counter", cnt1);
 	    RequestDispatcher dispacher = request.getRequestDispatcher("QuizQuestionShow.jsp");
 	    dispacher.forward(request, response);
 	} else {
